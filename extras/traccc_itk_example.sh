@@ -2,7 +2,7 @@
 ### please go ahead and edit the paths to the executable as needed
 ### keep in mind you need access to atlas-eftracking data to run this script
 
-/eos/home-e/exochell/traccc/traccc_st_plots/traccc/build/bin/traccc_seq_example \
+/afs/cern.ch/user/t/tcostaes/project/traccc_build/bin/traccc_seq_example \
    --detector-file="/eos/project/a/atlas-eftracking/GPU/ITk_data/latest/detray_detector_geometry.json" \
    --material-file="/eos/project/a/atlas-eftracking/GPU/ITk_data/latest/detray_detector_material_maps.json" \
    --grid-file="/eos/project/a/atlas-eftracking/GPU/ITk_data/latest/detray_detector_surface_grids.json" \

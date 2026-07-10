@@ -202,7 +202,7 @@ for NTHREAD in $(seq ${TRACCC_MIN_THREADS} ${TRACCC_THREAD_STEP} ${TRACCC_MAX_TH
             --conditions-file="${TRACCC_INPUT_DIR}/ITk_conditions_config.json" \
             --read-bfield-from-file                                            \
             --bfield-file="${TRACCC_INPUT_DIR}/ITk_bfield.cvf"                 \
-            --input-directory="${TRACCC_INPUT_DIR}/${EVTDIR}/"                 \
+            --input-directory="/eos/user/e/exochell/traccc/traccc_athena_plots/g200/traccc-athena/data/roiInputMuon/"                 \
             --use-acts-geom-source=0                                           \
             --input-events=35                                                 \
             --cpu-threads=${NTHREAD}                                           \
