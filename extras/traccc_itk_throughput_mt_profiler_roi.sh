@@ -12,22 +12,6 @@
 #
 
 # Stop on errors.
-export ALRB_localConfigDir="/etc/hepix/sh/GROUP/zp/alrb"
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-
-# Save this script's command-line arguments
-args=("$@")
-
-# Hide them from atlasLocalSetup.sh
-set --
-
-source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh
-
-asetup Athena,25.0.58,cuda
-
-# Restore the original arguments
-set -- "${args[@]}"
-
 set -e
 # Function printing the usage information for the script.
 usage() {
@@ -204,10 +188,10 @@ for NTHREAD in $(seq ${TRACCC_MIN_THREADS} ${TRACCC_THREAD_STEP} ${TRACCC_MAX_TH
             --bfield-file="${TRACCC_INPUT_DIR}/ITk_bfield.cvf"                 \
             --input-directory="/eos/user/e/exochell/traccc/traccc_athena_plots/g200/traccc-athena/data/roiInputMuon/"                 \
             --use-acts-geom-source=0                                           \
-            --input-events=35                                                 \
+            --input-events=10                                                 \
             --cpu-threads=${NTHREAD}                                           \
             --cold-run-events=$((5*${NTHREAD}))                                \
-            --processed-events=$((100*${NTHREAD}))                             \
+            --processed-events=$((10))                             \
             --log-file="${TRACCC_CSV_FILE}"                                    \
             ${TRACCC_CUTS[@]}
       done
