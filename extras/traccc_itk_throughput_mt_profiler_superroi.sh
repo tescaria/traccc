@@ -202,10 +202,9 @@ for NTHREAD in $(seq ${TRACCC_MIN_THREADS} ${TRACCC_THREAD_STEP} ${TRACCC_MAX_TH
             --conditions-file="${TRACCC_INPUT_DIR}/ITk_conditions_config.json" \
             --read-bfield-from-file                                            \
             --bfield-file="${TRACCC_INPUT_DIR}/ITk_bfield.cvf"                 \
-            --input-directory="/eos/user/e/exochell/traccc/traccc_athena_plots/g200/traccc-athena/data/roiInputMuon/"                 \
+            --input-directory="/eos/user/t/tcostaes/traccc_outputs/roiInputJets_nodup"                 \
             --use-acts-geom-source=0                                           \
-            --input-events=30                                                \
-            --input-skip=5 \
+            --input-events=50                                               \
             --cpu-threads=${NTHREAD}                                           \
             --cold-run-events=$((5*${NTHREAD}))                                \
             --processed-events=$((100*${NTHREAD}))                             \
