@@ -12,22 +12,6 @@
 #
 
 # Stop on errors.
-export ALRB_localConfigDir="/etc/hepix/sh/GROUP/zp/alrb"
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-
-# Save this script's command-line arguments
-args=("$@")
-
-# Hide them from atlasLocalSetup.sh
-set --
-
-source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh
-
-asetup Athena,25.0.58,cuda
-
-# Restore the original arguments
-set -- "${args[@]}"
-
 set -e
 
 # Function printing the usage information for the script.
@@ -54,7 +38,7 @@ usage() {
 # Parse the command line arguments.
 TRACCC_EXECUTABLE=${TRACCC_EXECUTABLE:-"/eos/user/t/tcostaes/project_gbts/traccc_build/bin/traccc_throughput_mt_cuda"}
 TRACCC_INPUT_DIR=${TRACCC_INPUT_DIR:-"/eos/project/a/atlas-eftracking/GPU/ITk_data/traccc_standalone_data"}
-TRACCC_EVENT_FILES=${TRACCC_EVENT_FILES:-"/eos/project/a/atlas-eftracking/GPU/ITk_data/traccc_standalone_data/ttbar_mu200"}
+TRACCC_EVENT_FILES=${TRACCC_EVENT_FILES:-"/eos/user/e/exochell/traccc/traccc_athena_plots/g200/traccc-athena/data/roiInputMuon"}
 TRACCC_MIN_THREADS=${TRACCC_MIN_THREADS:-1}
 TRACCC_MAX_THREADS=${TRACCC_MAX_THREADS:-$(nproc)}
 TRACCC_THREAD_STEP=${TRACCC_THREAD_STEP:-1}
@@ -217,12 +201,14 @@ for NTHREAD in $(seq ${TRACCC_MIN_THREADS} ${TRACCC_THREAD_STEP} ${TRACCC_MAX_TH
             --bfield-file="${TRACCC_INPUT_DIR}/ITk_bfield.cvf"                 \
             --input-directory="${EVTDIR}/"                                     \
             --use-acts-geom-source=0                                           \
-            --input-events=35                                  \
+            --input-events=10                                  \
+            --input-skip=5 \
             --cpu-threads=${NTHREAD}                                           \
-            --cold-run-events=$((5*${NTHREAD}))                                \
-            --processed-events=$((100*${NTHREAD}))              \
+            --cold-run-events=$((5))                                \
+            --processed-events=$((250))              \
             --log-file="${TRACCC_CSV_FILE}"                                    \
             --useGBTS --gbts_config_dir="${TRACCC_INPUT_DIR}" \
+            --random-seed=1 \
             ${TRACCC_CUTS[@]}                                                  \
 
       done
