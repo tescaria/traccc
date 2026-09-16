@@ -217,7 +217,7 @@ for NTHREAD in $(seq ${TRACCC_MIN_THREADS} ${TRACCC_THREAD_STEP} ${TRACCC_MAX_TH
             --bfield-file="${TRACCC_INPUT_DIR}/ITk_bfield.cvf"                 \
             --input-directory="${EVTDIR}/"                                     \
             --use-acts-geom-source=0                                           \
-            --input-events=35                                  \
+            --input-events=100                                  \
             --cpu-threads=${NTHREAD}                                           \
             --cold-run-events=$((5*${NTHREAD}))                                \
             --processed-events=$((100*${NTHREAD}))              \
